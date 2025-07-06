@@ -131,6 +131,7 @@ export default function Calender(props) {
                     } ${color === "white" ? "text-indigo-400" : "text-white"}`}
                     key={dayIndex}
                   >
+                    {console.log()}
                     <p>{dayIndex}</p>
                   </div>
                 );

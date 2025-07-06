@@ -84,11 +84,11 @@ export default function Dashboard() {
   }
 
   const moods = {
-    "&*@#$": "😭",
-    Sad: "🥲",
-    Existing: "🙂",
-    Good: "☺️",
-    Elated: "😍",
+    "Stressed &*@#": ["😭", "#e33b0c"],
+    Sad: ["🥲", "#ff6f00"],
+    Existing: ["🙂", "#FFD60A"],
+    Good: ["☺️", "#5AC8FA"],
+    Elated: ["😍", "#007AFF"],
   };
 
   useEffect(() => {
@@ -106,6 +106,7 @@ export default function Dashboard() {
   }
 
   return (
+    //Returning status bar
     <div className="flex flex-col flex-1 gap-8 sm:gap-12 md:gap-16">
       <div className="grid grid-cols-3 bg-indigo-50 text-indigo-500 rounded-lg p-4 gap-4">
         {Object.keys(statuses).map((status, index) => {
@@ -128,8 +129,9 @@ export default function Dashboard() {
         How do you <span className="textGradient">feel</span> today
       </h4>
 
+      {/* Rendering moods button */}
       <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
-        {Object.keys(moods).map((mood, index) => {
+        {Object.entries(moods).map(([mood, [emoji, bcolor]], index) => {
           return (
             <button
               onClick={() => {
@@ -137,11 +139,12 @@ export default function Dashboard() {
                 handleSetMood(currentMoodValue);
               }}
               key={index}
-              className={`text-center p-4 rounded-2xl purpleShadow cursor-pointer duration-200 bg-indigo-50 hover:bg-indigo-100 flex flex-col gap-1.5 ${
+              className={`text-center p-4 rounded-2xl purpleShadow cursor-pointer duration-200 bg-indigo-50  hover:bg-indigo-100 flex flex-col gap-1.5 ${
                 index === 4 ? "col-span-2 sm:col-span-1" : " "
               }`}
+              style={{ border: `2px solid ${bcolor}` }}
             >
-              <p className="text-2xl sm:text-3xl md:text-4xl">{moods[mood]}</p>
+              <p className="text-2xl sm:text-3xl md:text-4xl">{emoji}</p>
               <p className={`${fugaz.className} text-indigo-500`}>{mood}</p>
             </button>
           );
