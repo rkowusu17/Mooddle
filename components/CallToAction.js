@@ -6,7 +6,7 @@ import Button from "./Button";
 import { useAuth } from "@/context/AuthContext";
 
 export default function CallToAction() {
-  const { currentUser } = useAuth();
+  const { currentUser, setisRegistered } = useAuth();
   if (currentUser) {
     return (
       <div className="mx-auto max-w-[15rem] w-full">
@@ -20,11 +20,15 @@ export default function CallToAction() {
     <div>
       <div className="w-fit mx-auto grid grid-cols-2 gap-4">
         <Link href={"/dashboard"}>
-          <Button text="Sign Up" />
+          <Button text="Sign Up" clickHandler={() => setisRegistered(true)} />
         </Link>
 
         <Link href={"/dashboard"}>
-          <Button text="Login" dark />
+          <Button
+            text="Login"
+            dark
+            clickHandler={() => setisRegistered(false)}
+          />
         </Link>
       </div>
     </div>

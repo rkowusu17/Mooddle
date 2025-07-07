@@ -21,6 +21,7 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
   const [userDataObject, setUserDataObject] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isRegistered, setisRegistered] = useState(false);
 
   //AUTH Handlers
 
@@ -88,8 +89,10 @@ export function AuthProvider({ children }) {
     logout,
     login,
     resetPassword,
-    loading, 
-    setUserDataObject
+    loading,
+    setUserDataObject,
+    isRegistered,
+    setisRegistered,
   };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

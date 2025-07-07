@@ -37,7 +37,9 @@ export default function Dashboard() {
     }
     return {
       num_of_days: totalNumberOfDays,
-      average_Mood: (sumMoods / totalNumberOfDays).toFixed(2),
+      average_Mood: isNaN((sumMoods / totalNumberOfDays).toFixed(2))
+        ? 0
+        : (sumMoods / totalNumberOfDays).toFixed(2),
     };
   }
 
